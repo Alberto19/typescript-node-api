@@ -10,7 +10,4 @@ export class Livro{
     @Column()
     author: string;
 
-    @Column('datetime')
-    ano: Date;
-
 }

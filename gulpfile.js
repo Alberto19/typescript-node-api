@@ -3,7 +3,7 @@ const ts = require('gulp-typescript');
 
 const tsProject = ts.createProject('tsconfig.json');
 
-gulp.task('scripts', () =>{
+gulp.task('ts', () =>{
     const tsResult = tsProject.src()
     .pipe(tsProject());
     return tsResult.js.pipe(gulp.dest('dist'));

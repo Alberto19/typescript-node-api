@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 
-const Heroes = require('../data');
+//const Heroes = require('../d');
 
 
 export class HeroRouter{
@@ -12,7 +12,7 @@ export class HeroRouter{
     }
 
     public getAll(req: Request, res: Response, next: NextFunction ){
-        res.send(Heroes);
+        res.send();
     }
 
     init(){
