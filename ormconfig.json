@@ -11,18 +11,10 @@
     },
     "autoSchemaSync": true,
     "entities": [
-      "dist/models/*.js"
-    ],
-    "subscribers": [
-      "dist/subscriber/*.js,"
-    ],
-    "migrations": [
-      "dist/migration/*.js"
+      "dist/domain/entity/*.js"
     ],
     "cli": {
-      "entitiesDir": "dist/models",
-      "migrationsDir": "dist/migration",
-      "subscribersDir": "dist/subscriber"
+      "entitiesDir": "dist/domain/entity"
     }
   }
 ]

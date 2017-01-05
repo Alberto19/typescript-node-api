@@ -12,10 +12,12 @@ export class LivroRouter{
     public create(req: Request, res: Response, next: NextFunction ){
         let Livros = new LivroDAO();
         let body = req.body;
-        Livros.persist(body.title,body.author,body.ano);
+        Livros.persist(body.title,body.author);
     }
     public getAll(req: Request, res: Response, next: NextFunction ){
-        res.send('Bem vindo');
+        let Livros = new LivroDAO();
+       let valor = Livros.findAll();  
+        res.json(valor);
     }
 
     init(){
