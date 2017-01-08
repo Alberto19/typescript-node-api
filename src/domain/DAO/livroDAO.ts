@@ -4,13 +4,14 @@ import {Livro} from '../entity/livro';
 
 export class LivroDAO {
 
-    findAll() {
-       createConnection().then(async con => {
-            let livroRepository = con.getRepository(Livro);
-            let livros = await livroRepository.find();
-            console.log(livros);
-        }).catch(error => console.log('Erro ao pegar todos os livros', error));
-        
+    async findAll() {
+        return await createConnection().then(async con => {
+            const resposta = await con
+                .getRepository(Livro)
+                .find();
+            con.close();
+            return resposta;
+        });
     };
 
     findOne(livro) {
@@ -27,13 +28,16 @@ export class LivroDAO {
             await livroRepository.findOneById(id);
         }).catch(error => console.log('Erro ao pegar um livro por id', error));
     };
-    persist(title, author) {
-        createConnection().then(async con => {
+    async persist(title, author) {
+        return await createConnection().then(async con => {
             const livro = new Livro();
             livro.title = title;
             livro.author = author;
-            const livroRepository = con.getRepository(Livro);
-            await livroRepository.persist(livro);
+            const res = await con
+                .getRepository(Livro)
+                .persist(livro);
+            con.close();
+            return res;
         }).catch(error => console.log('Erro ao salvar um livro', error));
     };
 

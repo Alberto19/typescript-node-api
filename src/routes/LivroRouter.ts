@@ -3,21 +3,18 @@ import { Router, Request, Response, NextFunction } from 'express';
 
 export class LivroRouter{
     router: Router
-    LivroDAO: LivroDAO
     constructor(){
         this.router = Router();
         this.init();
     }
 
-    public create(req: Request, res: Response, next: NextFunction ){
+    public async create(req: Request, res: Response, next: NextFunction ){
         let Livros = new LivroDAO();
-        let body = req.body;
-        Livros.persist(body.title,body.author);
+        res.json(await Livros.persist(req.body.title,req.body.author));
     }
-    public getAll(req: Request, res: Response, next: NextFunction ){
+    public async getAll(req: Request, res: Response, next: NextFunction ){
         let Livros = new LivroDAO();
-       let valor = Livros.findAll();  
-        res.json(valor);
+        res.json(await Livros.findAll());
     }
 
     init(){
