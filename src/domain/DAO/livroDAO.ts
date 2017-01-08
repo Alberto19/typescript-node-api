@@ -11,21 +11,26 @@ export class LivroDAO {
                 .find();
             con.close();
             return resposta;
-        });
+        }).catch(error => console.log('erro ao pegar todos os livros', error));
     };
 
-    findOne(livro) {
-        createConnection().then(async con => {
-
-            let livroRepository = con.getRepository(Livro);
-            await livroRepository.findOne(livro);
+    async findOne(livro) {
+        return await createConnection().then(async con => {
+            const resposta = await con
+                .getRepository(Livro)
+                .findOne(livro);
+            con.close();
+            return resposta;
         }).catch(error => console.log('Erro ao pegar um livro', error));
     };
 
-    findById(id) {
-        createConnection().then(async con => {
-            let livroRepository = con.getRepository(Livro);
-            await livroRepository.findOneById(id);
+    async findById(id) {
+        return await createConnection().then(async con => {
+            const resposta = await con
+                .getRepository(Livro)
+                .findOneById(id);
+            con.close();
+            return resposta;
         }).catch(error => console.log('Erro ao pegar um livro por id', error));
     };
     async persist(title, author) {

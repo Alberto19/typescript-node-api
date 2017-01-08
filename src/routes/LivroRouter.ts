@@ -12,14 +12,19 @@ export class LivroRouter{
         let Livros = new LivroDAO();
         res.json(await Livros.persist(req.body.title,req.body.author));
     }
-    public async getAll(req: Request, res: Response, next: NextFunction ){
+    public async findAll(req: Request, res: Response, next: NextFunction ){
         let Livros = new LivroDAO();
         res.json(await Livros.findAll());
     }
+    public async findById(req: Request, res: Response, next: NextFunction){
+        const Livros = new LivroDAO();
+        res.json(await Livros.findById(req.body.id));
+    }
 
     init(){
-        this.router.get('/', this.getAll);
+        this.router.get('/', this.findAll);
         this.router.post('/create', this.create);
+        this.router.post('/findById', this.findById);
     }
 }
     const livroRoutes = new LivroRouter();

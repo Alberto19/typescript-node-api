@@ -1,11 +1,10 @@
 [
   {
-    "name": "default",
     "driver": {
-      "type": "mysql",
-      "host": "localhost",
-      "port": 3306,
-      "username": "root",
+      "type": "mssql",
+      "host": "JUNIOR\\SQLEXPRESS",
+      "port": 1433,
+      "username": "JUNIOR\\hp",
       "password": "",
       "database": "types"
     },
@@ -18,3 +17,23 @@
     }
   }
 ]
+// [
+//   {
+//     "name": "default",
+//     "driver": {
+//       "type": "mysql",
+//       "host": "localhost",
+//       "port": 3306,
+//       "username": "root",
+//       "password": "",
+//       "database": "types"
+//     },
+//     "autoSchemaSync": true,
+//     "entities": [
+//       "dist/domain/entity/*.js"
+//     ],
+//     "cli": {
+//       "entitiesDir": "dist/domain/entity"
+//     }
+//   }
+// ]
